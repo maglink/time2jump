@@ -110,7 +110,7 @@ module.exports = function(ctx, world) {
                     _self.ctx.rotate(-body.renderer.angle);
                 }
                 _self.ctx.translate(-x, -y);
-            } else if(_self.isDebug) {
+            } else if(body.renderer.color || _self.isDebug) {
                 _self.drawBodyRectangle(body)
             }
 

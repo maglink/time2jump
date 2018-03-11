@@ -16,6 +16,26 @@ body {
   height: 100%;
   color: white;
   font-size: 4vmin;
+
+
+  > #header {
+    margin: 15px;
+
+    a {
+      text-decoration: none;
+
+      &:link {
+        color: #fff;
+      }
+      &:visited {
+        color: #fff;
+      }
+    }
+
+    #sounds {
+      line-height: 8vmin;
+    }
+  }
 }
 
 .dont_smooth {
@@ -26,4 +46,75 @@ body {
   image-rendering: pixelated; /* Chrome */
   image-rendering: optimize-contrast;         /* CSS3 Proposed                  */
   -ms-interpolation-mode: nearest-neighbor;   /* IE8+                           */
+}
+
+
+#loader {
+  position: absolute;
+  top:0;
+  left:0;
+  bottom:0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  background-color: #636363;
+}
+
+.progress-bar {
+  background-color: #9E9E9E;
+  height: 15px;
+  padding: 5px;
+  width: 80%;
+  min-width: 200px;
+  max-width: 350px;
+  margin: 0 auto;
+  border-radius: 5px;
+  box-shadow: 0 1px 5px #000 inset, 0 1px 0 #444;
+}
+
+.progress-bar span {
+  display: inline-block;
+  height: 15px;
+  border-radius: 3px;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, .5) inset;
+  transition: width .4s ease-in-out;
+  background-color: #616161;
+}
+
+.center-parent {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.center-child {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#loader .center-child {
+  width: 100%;
+}
+
+#loader_label {
+  padding: 10px;
+  text-align: center;
+  font-size: 6vmin;
+  font-family: 'Corben', Georgia, Times, serif;
+  color: #00BCD4;
+
+  #two {
+    font-weight: bold;
+    font-size: 8vmin;
+    color: #ffb610;
+  }
+}
+
+p {
+  font-family: 'Nobile', Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  line-height: 25px;
 }

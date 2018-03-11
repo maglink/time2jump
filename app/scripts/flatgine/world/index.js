@@ -206,6 +206,23 @@ module.exports = function(game) {
         })
     };
 
+    _self.AddZone = function(name, x, y, width, height) {
+        var zone = {
+            name: name,
+            x: x || 0,
+            y: y || 0,
+            width: width || 1,
+            height: height || 1
+        };
+
+        zone.centerX = zone.x+zone.width/2;
+        zone.centerY = zone.y-zone.height/2;
+
+        _self.map.zones.push(zone);
+
+        return zone;
+    };
+
     _self.SetBodyPositionByZone = function (body, zoneName) {
         var zone = _self.map.zones.filter(function(zone){return zone.name === zoneName;})[0];
         if(zone) {

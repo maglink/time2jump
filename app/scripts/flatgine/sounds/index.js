@@ -9,13 +9,24 @@ module.exports = function () {
 
     _self.masterVolume = 1;
 
+    var mvHandlers = [];
+    _self.OnMasterVolumeChange = function (handler) {
+        if(typeof handler === 'function') {
+            mvHandlers.push(handler)
+        }
+    };
+
     _self.SetMasterVolume = function (masterVolume) {
         _self.masterVolume = masterVolume;
         _self.channels.forEach(function(channel){
             channel.volume = (channel.volumeOriginal || 1) * _self.masterVolume;
         });
         _self.backChannel.volume = (_self.backChannel.volumeOriginal || 1) * _self.masterVolume;
+        mvHandlers.forEach(function(handler){
+            handler(_self.masterVolume)
+        })
     };
+
 
 
     _self.backList = {};
