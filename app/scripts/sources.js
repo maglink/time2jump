@@ -40,12 +40,12 @@ var filesList = [
     'files/maps/textures/virtual-block-1.png',
     'files/maps/textures/virtual-block-2.png',
 
-    'files/sounds/block-moving.wav',
+    //'files/sounds/block-moving.wav',
     'files/sounds/footsteps.wav',
     'files/sounds/piston.wav',
     'files/sounds/switch.wav',
-    'files/sounds/virtual-block.wav',
-    'files/sounds/warp.wav',
+    //'files/sounds/virtual-block.wav',
+    //'files/sounds/warp.wav',
 
     'files/warp/1.png',
     'files/warp/2.png',
