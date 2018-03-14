@@ -66,7 +66,6 @@ module.exports = function() {
 
         _self.x += dx;
         _self.y += dy;
-
     };
 
     return _self;

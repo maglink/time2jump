@@ -9,7 +9,7 @@ module.exports = function(ctx, world) {
     _self.camera = new Camera();
     _self.animation = Animation(_self);
 
-    _self.isDebug = false;
+    _self.isDebug = true;
     _self.beforeHandlers = [];
     _self.textures = {};
 
@@ -114,6 +114,23 @@ module.exports = function(ctx, world) {
                 _self.drawBodyRectangle(body)
             }
 
+            if(_self.isDebug) {
+                _self.ctx.beginPath();
+                _self.ctx.moveTo(x,y);
+                _self.ctx.lineTo(x,y - body.physics.vy*map.tileheight*_self.camera.zoomRate);
+                _self.ctx.lineWidth = 2;
+                _self.ctx.strokeStyle = '#ff0000';
+                _self.ctx.stroke();
+
+
+                _self.ctx.beginPath();
+                _self.ctx.moveTo(x,y);
+                _self.ctx.lineTo(x + body.physics.vx*map.tilewidth*_self.camera.zoomRate,y);
+                _self.ctx.lineWidth = 2;
+                _self.ctx.strokeStyle = '#00ff00';
+                _self.ctx.stroke();
+            }
+
             if(body.renderer.label) {
                 x = _self.ctx.canvas.width/2 + ((body.physics.x+body.physics.width/2) - _self.camera.x) * _self.camera.zoomRate * map.tilewidth;
                 y = _self.ctx.canvas.height/2 - ((body.physics.y-body.physics.height/2) - _self.camera.y) * _self.camera.zoomRate * map.tileheight;
@@ -122,26 +139,6 @@ module.exports = function(ctx, world) {
                 _self.ctx.fillStyle = body.renderer.label.fillStyle || "black";
                 _self.ctx.textAlign = "center";
                 _self.ctx.fillText(body.renderer.label.text, x, y);
-            }
-
-            if(_self.isDebug) {
-                var centerX = x+width/2;
-                var centerY = y+height/2;
-
-                _self.ctx.beginPath();
-                _self.ctx.moveTo(centerX,centerY);
-                _self.ctx.lineTo(centerX,centerY - body.physics.vy*map.tileheight*_self.camera.zoomRate);
-                _self.ctx.lineWidth = 2;
-                _self.ctx.strokeStyle = '#ff0000';
-                _self.ctx.stroke();
-
-
-                _self.ctx.beginPath();
-                _self.ctx.moveTo(centerX,centerY);
-                _self.ctx.lineTo(centerX + body.physics.vx*map.tilewidth*_self.camera.zoomRate,centerY);
-                _self.ctx.lineWidth = 2;
-                _self.ctx.strokeStyle = '#00ff00';
-                _self.ctx.stroke();
             }
         })
     };
