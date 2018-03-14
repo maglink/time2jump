@@ -9,7 +9,7 @@ module.exports = function(ctx, world) {
     _self.camera = new Camera();
     _self.animation = Animation(_self);
 
-    _self.isDebug = true;
+    _self.isDebug = false;
     _self.beforeHandlers = [];
     _self.textures = {};
 
